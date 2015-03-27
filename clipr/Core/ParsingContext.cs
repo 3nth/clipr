@@ -148,9 +148,10 @@ namespace clipr.Core
 
             if (positionalArgStack.Count > 0)
             {
-                throw new ParseException(null, String.Format(
-                    "Extra positional arguments found: {0}",
-                    String.Join(" ", positionalArgStack.ToArray())));
+                if(!Config.IgnoreUnknownArguments)
+                    throw new ParseException(null, String.Format(
+                        "Extra positional arguments found: {0}",
+                        String.Join(" ", positionalArgStack.ToArray())));
             }
 
             ParsingCleanup();

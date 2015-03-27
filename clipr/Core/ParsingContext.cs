@@ -181,6 +181,8 @@ namespace clipr.Core
             INamedArgumentBase arg;
             if (!argDict.TryGetValue(name, out arg))
             {
+                if (Config.IgnoreUnknownArguments)
+                    return;
                 throw new ParseException(name.ToString(), String.Format(
                     "Unknown argument name '{0}'.", name));
             }

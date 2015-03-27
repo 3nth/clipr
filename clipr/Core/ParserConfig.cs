@@ -91,7 +91,9 @@ namespace clipr.Core
 
         internal readonly HashSet<string> RequiredMutuallyExclusiveArguments;
 
-        internal readonly HashSet<string> RequiredNamedArguments; 
+        internal readonly HashSet<string> RequiredNamedArguments;
+
+        internal readonly bool IgnoreUnknownArguments;
 
         public IEnumerable<ITrigger<T>> Triggers { get; set; }
 
@@ -110,6 +112,9 @@ namespace clipr.Core
                 ShortNameArguments = new Dictionary<char, IShortNameArgument>();
                 LongNameArguments = new Dictionary<string, ILongNameArgument>();
             }
+
+            if (options.HasFlag(ParserOptions.IgnoreUnknown))
+                IgnoreUnknownArguments = true;
 
             PositionalArguments = new List<IPositionalArgument>();
             Verbs = new Dictionary<string, VerbConfig>();

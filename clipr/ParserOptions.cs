@@ -16,6 +16,11 @@ namespace clipr
         /// <summary>
         /// Make short and long argument comparisons case insensitive.
         /// </summary>
-        CaseInsensitive = 1
+        CaseInsensitive = 1,
+
+        /// <summary>
+        /// Ignore unknown arguments.
+        /// </summary>
+        IgnoreUnknown = 2
     }
 }
